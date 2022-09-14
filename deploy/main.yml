@@ -1,0 +1,24 @@
+---
+- name: Deploy HTTP_server
+  gather_facts: false
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Copy docker build files
+      copy:
+        src: docker
+        dest: /opt/website/
+
+    - name: Create docker-compose
+      template:
+       src: docker-compose.yml
+       dest: /opt/website/docker-compose.yml
+       owner: root
+       group: root
+       mode: 0755
+
+    - name: Docker compose up
+      shell: docker-compose up --build -d
+      args:
+       chdir: /opt/website
