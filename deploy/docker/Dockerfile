@@ -2,6 +2,6 @@ FROM python:alpine
 
 WORKDIR /app
 
-COPY http.py /app
+COPY server.py /app
 
-CMD ["python" , "http.py"]
+CMD ["python" , "server.py"]
