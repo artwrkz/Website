@@ -22,3 +22,4 @@
       shell: docker-compose up --build -d
       args:
        chdir: /opt/website
+
